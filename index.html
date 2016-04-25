@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>MicroDG</title>  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content=""/>
+
+    <link rel="stylesheet" href="app/styles/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="app/styles/custom.css" type="text/css">
+    <link rel="stylesheet" href="app/styles/angular-chart.css" type="text/css">
+    <link rel="stylesheet" href="app/scripts//chart-js/angular-chart.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+    <!-- Load Scripts here -->
+    <script type="text/javascript" src="src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js""></script>
+    <script src="app/scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+    <script src="app/scripts/chart-js/angular-chart.js"></script>
+    <script src="app/scripts/angular.min.js"></script>
+    <script src="app/scripts/angular-fusioncharts.min.js"></script>
+    
+    <script src="app/modules/app.js"></script>
+    <script src="app/controllers/STATS.js"></script>
+    
+</head>
+
+
+<body ng-controller="dealsCtrl">
+      
+    
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-inverse navbar-fixed-top navTopCol" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href=""><img src=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="index.html">MicroDG</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#analytics">Analytics</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- Navbar End -->
+    
+       
+    <!-- Main Landing Section Start -->
+    
+    <section class="drop_100">
+       <div class="row">
+           <div class="col-md-12 img_center">
+               <img src="app/images/robot_logo.jpg" alt="MicroDG Logo" class="img-square img-responsive img_center" height="300" width="300">
+           </div>
+       </div>
+       <div class="row">
+           <h1 class="display-3 img_center drop_20">MicroDG</h1>
+           <h3 class="display-3 img_center">Distributed Data Retrieval & Generation through Microservices</h3>
+       </div>    
+    </section>
+    
+    <!-- Main Landing Section end   -->
+    
+    <!-- Tech Section Start -->
+    
+    <section class="drop_50 container">
+       <div class="row">   
+           <table class="table">
+                <tr>
+                    <td class=""><img src="app/images/Scala_logo.png" class="img-square img-responsive img_center" height="100" width="100"></td>
+                    <td class=""><img src="app/images/spray_io.png" class="img-square img-responsive img_center" height="100" width="100"></td>
+                    <td class=""><img src="app/images/akka.jpg" class="img-square img-responsive img_center" height="100" width="100"></td>
+                    <td class=""><img src="app/images/angularJS.png" class="img-square img-responsive img_center" height="80" width="80"></td>
+                    <td class=""><img src="app/images/java.png" class="img-square img-responsive img_center" height="80" width="80"></td>
+                    <td class=""><img src="app/images/bootstrap.png" class="img-square img-responsive img_center" height="80" width="80"></td>
+                </tr>
+                <tr>
+                    <td class=""><img src="app/images/fusioncharts.png" class="img-square img-responsive img_center" height="100" width="100"></td>
+                    <td class=""><img src="app/images/sbt.png" class="img-square img-responsive img_center" height="80" width="80"></td>
+                    <td class=""><img src="app/images/scalatest-logo.jpg" class="img-square img-responsive img_center" height="100" width="100"></td>
+                    <td class=""><img src="app/images/protactor.png" class="img-square img-responsive img_center" height="80" width="80"></td>
+                    <td class=""><img src="app/images/docker-logo.png" class="img-square img-responsive img_center" height="80" width="80"></td>
+                    <td class=""><img src="app/images/amazonS3.png" class="img-square img-responsive img_center" height="100" width="100"></td>
+                </tr>
+           </table>
+       </div>
+    </section>
+    
+    <!-- Tech Section end   -->
+    
+    
+    
+    <!-- Services Section Start -->
+    
+    <section class="drop_100" id="services">
+       <div class="row">
+           <div class="col-md-12">
+               <h2 class="display-3 img_center drop_20">Services</h2>
+               <p class="display-3 img_center container">
+                  There are four main services used by MicroDG in the this given use case. Each service can be used indepentantly and is accessed through its own interface.
+                  Services can also be combined using the "Process Controller Service Listed Below"
+               </p>
+           </div>
+           <br />
+           <div class="row">
+               <div class="container">
+                  <!-- Example row of columns -->
+                  <div class="row">
+                    <div class="col-md-3">
+                      <img src="./app/images/pcs_logo.png" alt="..." class="img_center" height="100" width="100">
+                      <h2 class="img_center">Process Controller Service</h2>
+                      <p>
+                          The Process Controller Service (PCS) has three primary functions:
+                      </p>
+                      <ol>
+                          <li>Tying a number of Microservics together</li>
+                          <li>Building a composite data object</li>
+                          <li>Recording runtime statistics for analysis</li>
+                      </ol>
+                      <p>
+                          Here the user can search for businesses based on location. Each business will then be geo-tagged and added to a new collection. That collection (forming a new composite object)
+                          will be persisted to an AWS S3 bucket where it can be viewed and downloaded by the user.
+                      </p>
+                      <p><a id="sgBtn1" class="btn btn-secondary" href="service-gateway.html" role="button">Service Gateway &raquo;</a></p>
+                    </div>
+                    <div class="col-md-3">
+                      <img src="./app/images/bbds_logo.jpg" alt="..." class="img_center" height="100" width="100">
+                      <h2 class="img_center">Base Business Details Servce</h2>
+                      <p>
+                         The Base Buisiness Details Service (BBDS) allows the user to retrieve basic details pertaining to a a list of businesses residing in an in-memory database.
+                         These details include the name, phone number and address of these businesses. The user can retrieve these business based on a range of location based seach criteria such as:
+                         town, county and region.
+                      </p>
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <p><a class="btn btn-secondary" href="service-gateway.html" role="button">Service Gateway &raquo;</a></p>
+                   </div>
+                    <div class="col-md-3">
+                     <img src="./app/images/gts_logo.png" alt="..." class="img_center" height="100" width="100">
+                      <h2 class="img_center">Geo Tagging Service</h2>
+                      <p>
+                          The Geo Tagging Service (GTS) allows the user (human or machine) to retireive the the geolocation coordinates (latitide & longitude) for ant given address.
+                          This service piggibacks on the existing Google Maps Geo Coding API. The service accepts a human readable address from the user, formats it for use with the Google API and then
+                          pasrses out the desired information which is displayed back to the user.
+                      </p>
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <p><a class="btn btn-secondary" href="service-gateway.html" role="button">Service Gateway &raquo;</a></p>
+                    </div>
+                    <div class="col-md-3">
+                     <img src="./app/images/ss_logo.jpg" alt="..." class="img_center" height="100" width="100">
+                      <h2 class="img_center">Storage Service (AWS S3)</h2>
+                      <p>
+                          The Storage Service (SS) persists the composite data object generated by the Process Controller Service (PCS) to an Amazon Web Service (AWS) S3 Bucket. 
+                          The composite data object, now a JSON file can be downloaded by the user via a hyperlink which is issued to the user upon PCS completion. 
+                      </p>
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <p><a class="btn btn-secondary" href="service-gateway.html" role="button">Service Gateway &raquo;</a></p>
+                    </div>
+                  </div>
+           </div>
+       </div>
+    </section>
+    
+    <!-- services Section end   -->
+    
+    <!-- About Section Start -->
+    
+    <section class="drop_100 dark_bg" id="about">
+       <div class="row">
+           <div class="col-md-12">
+               <h2 class="display-3 img_center drop_20">What is MicroDG</h2>
+               <p class="display-3 img_center container">
+                   MicroDG is a distributed suite of Microservices for the rapid processing and merging of data from multiple sources in a logical manner. 
+                   The resulting composite data-object is then written to an AWS S3 Bucket where it can be downloaded by the user. (Use Case: Sales/Marketing data generation)
+               </p>
+               <br />
+               <p class="display-3 img_center container">
+                   MicroDG aims to demonstrate how we can improve the speed and scalability of cloud based software systems by moving away from the classic monolithic architecture pattern to one based on microservices.
+               </p>
+               <br />
+               <p class="display-3 img_center container">
+                  The system allows the user to dynamically generate marketing data based on geographical location. This data is retrieved from a number of sources, processed and combined in logical manner, with the                           resulting composite object being written to an Amazon (AWS) S3 Bucket. The user is then issued a unique hyperlink which they can use to view and download the generated data object. 
+               </p>
+               <br />
+               <p class="display-3 img_center container">
+                 The motivation for developing MicroDG was to build a cloud based system of microservices for the purpose of dynamically generating and processing data (in this case sales lead data). The system addresses                    the need for the automated bulk tagging of freely available business data with a variety of additional information such as location data. This type of task would normally be done manually which is time                      consuming and not financially viable for many businesses.   
+               </p>
+               <br />
+               <p class="display-3 img_center container">
+                 Each of the MicroDG services is independent and can be accessed via a RESTful API exposed by a HTTP integration layer written in Scala, Spray and Akka. Multiple services can then be combined using an ESB                    like process controller. All services are designed to be activated via an AngularJS UI providing the user with convenient data retrieval, visualisation and analytics features.  
+               </p>
+               <br />   
+           </div>
+       </div>
+    </section>
+    
+    <!-- About Section end   -->
+    
+     <!-- Analtics Section Start -->
+    
+    <section id="analytics" class="drop_100">
+      
+      <div class="container">
+    
+        <div class="row">  
+           <div class="col-md-12">
+              
+                  <img src="./app/images/analytics.png" alt="..." class="img_center" height="100" width="100">
+                  <h2 class="img_center">Analytics Dashboard</h2>
+                  <button class="btn btn-info drop_20 img_center" ng-click="getSampleStats()">Get Sample Statistics</button>
+                  <a href="STATS-dashboard.html"><h6 class="img_center">Go to Analytics section</h6></a>    
+               
+                   <div class="panel panel-default drop_20">
+                      <div class="panel-heading">
+                        <h3 class="panel-title img_center">Runtime Analytics (Based on the last 5 requests)</h3>
+                      </div>
+                  <div class="panel-body">
+                      <div class="col-md-6">
+                           <fusioncharts width="510" height="510" type="line" formatNumberScale='0' datasource="{{lineChartDataSource_pcs}}"></fusioncharts>
+                      </div> 
+                          
+                      <div class="col-md-6">
+                           
+                      <div class="row">
+                          <div class="col-md-6">
+                              <fusioncharts width="250" height="250" type="column2d" formatNumberScale='0' datasource="{{columnChartDataSource_pcs}}"></fusioncharts>
+
+                          </div>
+                          <div class="col-md-6">
+                              <fusioncharts width="250" height="250" type="column2d" formatNumberScale='0' datasource="{{columnChartDataSource_bbds}}"></fusioncharts>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-6">
+                              <fusioncharts width="250" height="250" type="column2d" formatNumberScale='0' datasource="{{columnChartDataSource_gts}}"></fusioncharts>
+                          </div>
+                          <div class="col-md-6">
+                              <fusioncharts width="250" height="250" type="column2d" formatNumberScale='0' datasource="{{columnChartDataSource_ss}}"></fusioncharts>
+                          </div>
+                      </div>    
+                           
+                           
+<!--                           End of Col-->
+                      </div>     
+ 
+                      </div>
+                    </div>
+ 
+                
+            </div>
+        </div>
+    </div>
+       
+    </section>
+    
+    <!-- Analytics Section end   -->
+    
+    <div class="row lift_100"></div>
+    
+    
+    <!-- Footer Start -->
+        <div class="navbar navbar-default navbar-fixed-bottom drop_100">
+            <p class="navbar-text pull-right">Developed: by David Brady</p>
+        </div>
+    <!-- Footer End -->
+        
+    
+</body>
+</html>

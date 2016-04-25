@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <title>Base Business Details Service Dashboard</title>  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content=""/>
+
+    <link rel="stylesheet" href="app/styles/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="app/styles/custom.css" type="text/css">
+    <link rel="stylesheet" href="app/styles/angular-chart.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+    
+        <!-- Load Scripts here -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+    <script src="app/scripts/bootstrap.min.js"></script>
+    <script src="app/scripts/angular.min.js"></script>
+    <script src="app/scripts/angular-fusioncharts.min.js"></script>
+    
+    
+    <script src="app/modules/app.js"></script>
+    <script src="app/controllers/BBDS.js"></script>
+    
+</head>
+
+
+<body ng-controller="bbdsCtrl">
+      
+    
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-inverse navbar-fixed-top navTopCol" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href=""><img src=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="service-gateway.html">Service Gateway</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="BBDS-dashboard.html">Base Business Details Service Dashboard</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- Navbar End -->
+    
+    <div class="drop_100 container">
+    
+    <div class="row">
+       <div class="alert alert-info" role="alert">
+           Request status: {{loadStatus}}
+       </div>
+   </div>
+    
+
+    <div class="row">
+        <div class="col-md-12 container">
+            <div class="col-md-6 container">
+            <table class="table table-condensed">
+              <tr>
+                  <td>Get All Businesseses</td>
+                  <td> </td>
+                  <td><button id="allSearch" class="btn btn-info" ng-click="getBusinessList()">Call Web Service</button></td>
+              </tr>
+
+              <tr>
+                  <td>Get All Businesses by Town Name </td>
+                  <td>
+                      <form name="form1" class="form-group">
+                        <select name="repeatSelect" id="repeatSelect" ng-model="townOptions.townParam" class="form-control">
+                          <option class="form-control" placeholder="Business Town" ng-repeat="option in townOptions.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                        </select>
+                      </form>
+                  </td>
+                  <td><button class="btn btn-info" id="townSearch" ng-click="getBusinessListByTown(townOptions.townParam)">Call Web Service</button></td>
+              </tr>
+              
+              </table>
+        </div>
+             
+             <div class="col-md-6 container">
+            <table class="table table-condensed">
+              
+              <tr>
+                  <td>Get All Businesses by County</td>
+                  <td>
+                      <form name="form2" class="form-group">
+                        <select name="repeatSelect" id="repeatSelect" ng-model="countyOptions.countyParam" class="form-control">
+                          <option class="form-control" placeholder="Business County" ng-repeat="option in countyOptions.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                        </select>
+                      </form>
+                  </td>
+                  <td><button class="btn btn-info" id="countySearch" ng-click="getBusinessByCounty(countyOptions.countyParam)">Call Web Service</button></td>
+              </tr>
+              <tr>
+                  <td>Get All Businesses by Region</td>
+                  <td>
+                      <form name="form3" class="form-group">
+                        <select name="repeatSelect" id="repeatSelect" ng-model="regionOptions.regionParam" class="form-control">
+                          <option class="form-control" placeholder="Business Region" ng-repeat="option in regionOptions.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                        </select>
+                      </form>
+                  </td>
+                  <td><button class="btn btn-info" id="regionSearch" ng-click="getBusinessByRegion(regionOptions.regionParam)">Call Web Service</button></td>
+              </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+           
+<!--           Start of Vertical Dashboard -->
+           
+            <div class="col-md-4">
+                
+                <div class="row">
+                    
+                
+                <div class="col-md-6">
+                       <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Request Status</h3>
+                            </div>
+                          <div class="panel-body">
+                          <div class="panel panel-default">
+                              <div class="panel-body">
+                                <center><img src='{{status_image}}' alt="STATUS: Not running" width="100" height="100"></center>
+                              </div>
+                            </div>
+                        </div>
+                   </div>
+    
+                </div>
+                   
+                <div class="col-md-6">
+
+                        <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Record Count</h3>
+                                </div>
+                              <div class="panel-body">
+
+                              <div class="panel panel-default">
+                                  <div class="panel-body">
+                                    <center class="count_text">{{ bbds_business_list.length }}</center>
+                                  </div>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                    
+<!--             End of row containing Count and Status       -->
+            </div>
+               
+            <div class="row">
+                
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Detailed Business Query</h3>
+                            </div>
+                          <div class="panel-body">
+
+                          <div class="panel panel-default">
+                              <div class="panel-body">
+                                <input ng-model="p1"class="form-control" placeholder="Record ID"/>
+                              </div>
+                            </div>
+                        </div>
+                   </div>
+                </div>
+                
+<!--         End of form input row       -->
+            </div>
+               
+            <div class="row">
+                <div class="col-md-12">
+                   
+                    <div class="panel panel-deafult">
+                          <div class="panel-body">
+
+                          <div class="panel panel-default">
+                              <div class="panel-body">
+                               
+                               <p><b>Name: {{ bbds_business_list[p1].name }}</b></p>
+                               <br />
+                               <p><b>Catagorey: {{ bbds_business_list[p1].channel }} ( {{bbds_business_list[p1].channel_type}} )</b></p>
+                               <br />
+                               <p><b>Phone: {{ bbds_business_list[p1].phone }}</b></p>
+                               <p><b>Address: {{ bbds_business_list[p1].address }}</b></p>
+                               
+                               <p><b>Town: {{ bbds_business_list[p1].town }}</b></p>
+                               <p><b>County: {{ bbds_business_list[p1].county }}</b></p>
+                               <p><b>Region: {{ bbds_business_list[p1].region }}</b></p>
+                                
+                              </div>
+                            </div>
+                        </div>
+                   </div>
+                         
+                </div>
+<!--            End of detailed view pane;l -->
+            </div>
+                
+            
+               
+                
+<!--        End of Column Container    -->
+        </div>
+        
+<!--        End of Vertical Dashboard -->
+        
+<!--        Start of Table -->
+        <div class="col-md-8">
+                
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Base Business Details</h3>
+                  </div>
+                  <div class="panel-body ">
+                    
+                      <table class="table table-bordered">
+                        <thead class="thead-info">
+                            <th>ID</th>
+                            <th>Business Name</th>
+<!--
+                            <th>Category</th>
+                            <th>Sub Category</th>
+-->
+<!--                            <th>Phone</th>-->
+                            <th>Address</th>
+                            <!-- The ng-click directive used below allows the user to reverse the order of the table when they click the name header -->
+                            <th ng-click="sortBy='record';reverse=!reverse">Town/City</th>
+                            <th ng-click="sortBy='record';reverse=!reverse">County</th>
+                            <th ng-click="sortBy='record';reverse=!reverse">Region</th>
+                        </thead>
+
+                        <tr data-ng-repeat="record in bbds_business_list | orderBy:sortBy:reverse">
+                            <td>{{$index}}</td>
+                            <td>{{ record.name }}</td>
+<!--
+                            <td>{{ record.channel }}</td>
+                            <td>{{ record.channel_type }}</td>
+-->
+<!--                            <td>+ 353{{ record.phone }}</td>-->
+                            <td>{{ record.address }}</td>
+                            <td>{{ record.town }}</td>
+                            <td>{{ record.county }}</td>
+                            <td>{{ record.region }}</td>
+                        </tr>
+                    </table>
+                      
+                  </div>
+                </div>
+                
+            </div>
+            
+       
+<!--       End of Table-->
+        
+        
+    
+    </div>
+    
+    
+    <div class="row lift_100"></div>
+    
+    
+    <!-- Footer Start -->
+        <div class="navbar navbar-default navbar-fixed-bottom drop_100">
+            <p class="navbar-text pull-right">Developed: by David Brady</p>
+        </div>
+    <!-- Footer End -->
+       
+    <script type="text/javascript" src="src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js""></script>
+    <script src="app/scripts/bootstrap.min.js"></script>
+        
+    
+</body>
+</html>

@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <title>Process Controller Service Dashboard</title>  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content=""/>
+
+    <link rel="stylesheet" href="app/styles/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="app/styles/custom.css" type="text/css">
+    <link rel="stylesheet" href="app/styles/angular-chart.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    
+            <!-- Load Scripts here -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+    <script src="app/scripts/bootstrap.min.js"></script>
+    <script src="app/scripts/angular.min.js"></script>
+    <script src="app/scripts/angular-fusioncharts.min.js"></script>
+    
+    
+    <script src="app/modules/app.js"></script>
+    <script src="app/controllers/PCS.js"></script>
+
+</head>
+<body class="container" ng-controller="pcsCtrl">
+    
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-inverse navbar-fixed-top navTopCol" role="navigation">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="brand" href=""><img src=""></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="service-gateway.html">Service Gateway</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="PCS-dashboard.html">Process Controller Dashboard</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <!-- Navbar End -->
+    
+    
+   <div class="row drop_100">
+       <div class="alert alert-info" role="alert">
+           Request status: {{loadStatus}}
+       </div>
+   </div>
+   
+   <div class="row">
+        <div class="col-md-6 container">
+            <table class="table table-condensed">
+              <tr>
+                  <td><b>Retrieve all business records : </b></td>
+                  <td> </td>
+                  <td><button id="allSearch" class="btn btn-info" ng-click="getBusinessesByAll()">Call Web Service</button></td>
+              </tr>
+
+              <tr>
+                  <td><b>Retrieve all business records for a given town: </b></td>
+                  <td>
+                      <form name="form1" class="form-group">
+                        <select name="repeatSelect" id="repeatSelect" ng-model="townOptions.townParam" class="form-control">
+                          <option class="form-control" placeholder="Business Town" ng-repeat="option in townOptions.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                        </select>
+                      </form>
+                  </td>
+                  <td><button class="btn btn-info" id="townSearch" ng-click="getBusinessesByTown(townOptions.townParam)">Call Web Service</button></td>
+              </tr>
+            </table>
+        </div>
+        
+        <div class="col-md-6 container">
+            <table class="table table-condensed">
+              
+              <tr>
+                  <td><b>Retrieve all business records for a given county: </b></td>
+                  <td>
+                      <form name="form2" class="form-group">
+                        <select name="repeatSelect" id="repeatSelect" ng-model="countyOptions.countyParam" class="form-control">
+                          <option class="form-control" placeholder="Business County" ng-repeat="option in countyOptions.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                        </select>
+                      </form>
+                  </td>
+                  <td><button class="btn btn-info" id="countySearch" ng-click="getBusinessesByCounty(countyOptions.countyParam)">Call Web Service</button></td>
+              </tr>
+              <tr>
+                  <td><b>Retrieve all business records for a given region: </b></td>
+                  <td>
+                      <form name="form3" class="form-group">
+                        <select name="repeatSelect" id="repeatSelect" ng-model="regionOptions.regionParam" class="form-control">
+                          <option class="form-control" placeholder="Business Region" ng-repeat="option in regionOptions.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                        </select>
+                      </form>
+                  </td>
+                  <td><button class="btn btn-info" id="regionSearch" ng-click="getBusinessesByRegion(regionOptions.regionParam)">Call Web Service</button></td>
+              </tr>
+            </table>
+        </div>
+    </div>
+    
+    
+    <div class="row">
+        <div class="col-md-12">
+             <table class="table table-bordered">
+              <tr>
+                <td>A link to the generated json file will appear shortly. Click to download (File Type: Json)</td>
+              </tr>
+              <tr>
+                <td><a href="{{obj[0].file_location}}">{{obj[0].file_location}}</a></td>
+                <td><i class="fa fa-cloud-download fa-3x img_center"></i></td>
+              </tr>
+              </table>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row lift_100">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+               <div class="panel panel-heading"></div>
+                <div class="panel-body">
+                   
+                    <table class="table table-bordered">
+                        <thead class="thead-info">
+                            <th>Business Name</th>
+                            <th>Business Address</th>
+                            <th>Business Phone</th>
+                            <th>Latitude</th>
+                            <th>Longitude</th>
+                        </thead>
+
+                        <tr data-ng-repeat="record in obj">
+                            <td>{{ record.b_name }}</td>
+                            <td>{{ record.b_address }}</td>
+                            <td>{{ record.b_phone }}</td>
+                            <td>{{ record.b_lat }}</td>
+                            <td>{{ record.b_lng }}</td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <!-- Footer Start -->
+        <div class="navbar navbar-default navbar-fixed-bottom drop_100">
+            <p class="navbar-text pull-right">Developed: by David Brady</p>
+        </div>
+    <!-- Footer End -->
+
+</body>
+</html>

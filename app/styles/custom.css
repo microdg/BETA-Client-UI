@@ -1,0 +1,65 @@
+.drop_100{
+    margin-top: 100px;
+}
+
+.drop_50{
+    margin-top: 50px;
+}
+
+.drop_20{
+    margin-top: 20px;
+}
+
+.drop_10{
+    margin-top: 10px;
+}
+
+.lift_100{
+    margin-bottom: 100px;
+}
+
+.lift_20{
+    margin-bottom: 100px;
+}
+
+.lift_10{
+    margin-bottom: 100px;
+}
+
+.img_center{
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.allign_right{
+    text-align: right;
+}
+
+.count_text{
+    text-align: center;
+    font-size: 500%;
+    font-weight: bold;
+}
+
+.jumbotron{
+    background-image: url(../images/robot_logo.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    color: white;
+}
+
+.robo_logo{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin-left: 40%;
+    margin-right: 40%;
+}
+
+.dark_bg{
+    background-color: cadetblue;
+    color: white;
+}
