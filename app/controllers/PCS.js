@@ -43,14 +43,20 @@ app.controller('pcsCtrl', function($scope, $http) {
       repeatSelect: null,
       availableOptions: [
         {id: 'Balbriggan', name: 'Balbriggan'},
-        {id: 'Skerries', name: 'Skerries'}
+        {id: 'Skerries', name: 'Skerries'},
+        {id: 'Cork', name: 'Cork'},
+        {id: 'Galway', name: 'Galway'},
+        {id: 'Belfast', name: 'Belfast'}
       ],
     }
     
    $scope.countyOptions = {
     repeatSelect: null,
     availableOptions: [
-      {id: 'Dublin', name: 'Dublin'}
+      {id: 'Dublin', name: 'Dublin'},
+      {id: 'Cork', name: 'Cork'},
+      {id: 'Galway', name: 'Galway'},
+      {id: 'Antrim', name: 'Antrim'}
     ],
    }
    
