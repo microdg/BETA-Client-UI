@@ -91,7 +91,7 @@ app.controller('bbdsCtrl', function($scope, $http) {
     availableOptions: [
       {id: 'Leinster', name: 'Leinster'},
       {id: 'Munster', name: 'Munster'},
-      {id: 'Connact', name: 'Connact'},
+      {id: 'Connacht', name: 'Connacht'},
       {id: 'Ulster', name: 'Ulster'}
     ],
    }
